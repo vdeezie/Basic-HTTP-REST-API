@@ -5,7 +5,35 @@ import (
 	"net/http"	
 )
 
-type books map [string]string
+type Book struct
+	Name		string	`json: "name"`
+	Author		string	`json: "author"`
+	PublishedAt	string	`json: "published_at"`
+	
+}
+
+func loadBooks(w http.ResponseWriter, r *http.Request) {
+	book := Book{"The Silmarilion", "JRR Tolkein", time.Now().Local().String()}
+
+	bk, err :=json.Marshal(book)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	w.Header().Set("Content-Type", "application/json")
+	w.Write(bk)
+}
+
+func main() {
+	mux := http.NewServeMux()
+	mux.HandleFunc("/books", loadBooks)
+
+	fs := http.FileServer(http.Dir("assets/"))
+	mux.Handle("/static/", http.StripPrefix("/static", fs))
+	
+	http.ListenAndServe(":8000", mux)
+}
+/*type books map [string]string
 
 func (b books) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	switch r.URL.Path {
@@ -43,12 +71,4 @@ func main() {
 	bk ["jrrtolkein"] = "The Silmarilion"
 	fmt.Println("server listening on port 8000")
 	//http.ListenAndServe(":8000", bk)
-	
-	//Loading static files CSS, JavaScript
-	mux := http.NewServeMux()
-	mux.Handle("/book", bk)
-
-	fs := http.FileServer(http.Dir("assets/"))
-	mux.Handle("/static/", http.StripPrefix("/static", fs))
-	http.ListenAndServe(":8000", mux)
-}
+}*/
