@@ -18,9 +18,10 @@ func (b books) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		book, ok := b[item]
 		if !ok {
 			w.WriteHeader(http.StatusNotFound)
-			fmt.Fprintf(w, "book not found: %s\n", item)
+			fmt.Fprintf(w, "book not found for: %q\n", item)
+			return
 		}
-		fmt.Fprintf(w, "The book is %s", book)
+		fmt.Fprintf(w, "The book is %s\n", book)
 	default:
 		w.WriteHeader(http.StatusNotFound)
 		fmt.Fprintf(w, "url not found! %s\n", r.URL.String())
@@ -37,10 +38,17 @@ func main() {
 	//	fmt.Fprint(w, "About, HTTP in Go\n")
 	//})
 
-
+	// Routing
 	bk := books{}
 	bk ["jrrtolkein"] = "The Silmarilion"
 	fmt.Println("server listening on port 8000")
-	http.ListenAndServe(":8000", bk)
+	//http.ListenAndServe(":8000", bk)
 	
+	//Loading static files CSS, JavaScript
+	mux := http.NewServeMux()
+	mux.Handle("/book", bk)
+
+	fs := http.FileServer(http.Dir("assets/"))
+	mux.Handle("/static", http.StripPrefix("/static", fs))
+	http.ListenAndServe(":8000", mux)
 }
