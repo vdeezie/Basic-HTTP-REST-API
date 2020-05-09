@@ -8,7 +8,7 @@ import (
 type books map [string]string
 
 func (b books) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	switch r.URL.String() {
+	switch r.URL.Path {
 	case "/home":
 		fmt.Fprintf(w, "Welcome to book server. You came via %s\n", r.URL.String())
 	case "/about":
@@ -49,6 +49,6 @@ func main() {
 	mux.Handle("/book", bk)
 
 	fs := http.FileServer(http.Dir("assets/"))
-	mux.Handle("/static", http.StripPrefix("/static", fs))
+	mux.Handle("/static/", http.StripPrefix("/static", fs))
 	http.ListenAndServe(":8000", mux)
 }
