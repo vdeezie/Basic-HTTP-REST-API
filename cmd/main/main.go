@@ -4,7 +4,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/example/simple-REST/pkg/routes"
+	"BookServiceRESTAPI/pkg/routes"
 	"github.com/gorilla/mux"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 )

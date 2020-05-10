@@ -3,11 +3,11 @@ package controllers
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/example/simple-REST/pkg/utils"
+	"BookServiceRESTAPI/pkg/utils"
 	"github.com/gorilla/mux"
 	"net/http"
 	"strconv"
-	"github.com/example/simple-REST/pkg/models"
+	"BookServiceRESTAPI/pkg/models"
 )
 
 var NewBook models.Book

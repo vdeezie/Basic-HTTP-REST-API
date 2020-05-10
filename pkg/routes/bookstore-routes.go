@@ -1,7 +1,7 @@
 package routes
 
 import (
-	"github.com/example/simple-REST/pkg/controllers"
+	"BookServiceRESTAPI/pkg/controllers"
 	"github.com/gorilla/mux"
 )
 

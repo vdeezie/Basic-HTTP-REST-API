@@ -1,7 +1,7 @@
 package models
 
 import (
-	"github.com/example/simple-REST/pkg/config"
+	"BookServiceRESTAPI/pkg/config"
 	"github.com/jinzhu/gorm"
 )
 
