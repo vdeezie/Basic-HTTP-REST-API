@@ -5,11 +5,10 @@ import (
 	"github.com/jinzhu/gorm"
 )
 
-var db *gorm.DB
+var db *sql.DB
 
 type Book struct {
-	gorm.Model
-	//Id          string `json:"id"`
+	Id          string `json:"id"`
 	Name        string `gorm:""json:"name"`
 	Author      string `json:"author"`
 	Publication string `json:"publication"`

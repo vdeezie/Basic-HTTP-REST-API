@@ -1,23 +1,27 @@
 package config
 
 import (
-	"github.com/jinzhu/gorm"
-	_ "github.com/jinzhu/gorm/dialects/mysql"
+	"database/sql"
+	_ "github.com/go-sql-driver/mysql"
 )
 
 var (
-	db * gorm.DB
+	db *sql.DB
+	Router *mux.Router
 )
 
+//Connect to MySQL
 func Connect() {
-	// Please define your user name and password for my sql.
-	d, err := gorm.Open("mysql", "root:root@/simplerest?charset=utf8&parseTime=True&loc=Local")
+
+	d, err := sql.Open("mysql", "root:595983Fc@tcp(127.0.0.1:3306)/bookdb")
 	if err != nil{
-		panic(err)
+		panic(err.Error())
 	}
+
+	defer db.Close()
 	db = d
 }
 
-func GetDB() *gorm.DB {
+func GetDB() *sql.DB {
 	return db
 }

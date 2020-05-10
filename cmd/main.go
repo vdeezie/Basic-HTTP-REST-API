@@ -6,7 +6,7 @@ import (
 
 	"BookServiceRESTAPI/pkg/routes"
 	"github.com/gorilla/mux"
-	_ "github.com/jinzhu/gorm/dialects/mysql"
+	_ "github.com/go-sql-driver/mysql"
 )
 func main() {
 	r := mux.NewRouter()
