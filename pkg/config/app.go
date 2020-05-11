@@ -2,23 +2,18 @@ package config
 
 import (
 	"database/sql"
-	_ "github.com/go-sql-driver/mysql"
+	_"github.com/go-sql-driver/mysql"
 )
 
 var (
-	db *sql.DB
-	Router *mux.Router
+	db * sql.DB
 )
 
-//Connect to MySQL
 func Connect() {
-
-	d, err := sql.Open("mysql", "root:595983Fc@tcp(127.0.0.1:3306)/bookdb")
+	db, err := sql.Open("mysql", "root:595983Fc@tcp(127.0.0.1:3306)bookservicedb")
 	if err != nil{
-		panic(err.Error())
+		panic(err)
 	}
-
-	defer db.Close()
 	db = d
 }
 

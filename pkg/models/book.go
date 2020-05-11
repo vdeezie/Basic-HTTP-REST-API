@@ -2,14 +2,15 @@ package models
 
 import (
 	"BookServiceRESTAPI/pkg/config"
-	"github.com/jinzhu/gorm"
+	"database/sql"
 )
 
 var db *sql.DB
 
 type Book struct {
-	Id          string `json:"id"`
-	Name        string `gorm:""json:"name"`
+	sql.Model
+	//Id          string `json:"id"`
+	Name        string `sql:""json:"name"`
 	Author      string `json:"author"`
 	Publication string `json:"publication"`
 }
@@ -32,11 +33,6 @@ func  GetAllBooks() []Book {
 	return Books
 }
 
-func GetBookById(Id int64) (*Book , *gorm.DB){
-	var getBook Book
-	db:=db.Where("ID = ?", Id).Find(&getBook)
-	return &getBook, db
-}
 
 func DeleteBook(ID int64) Book {
 	var book Book

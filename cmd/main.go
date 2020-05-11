@@ -3,10 +3,11 @@ package main
 import (
 	"log"
 	"net/http"
+	"database/sql"
 
 	"BookServiceRESTAPI/pkg/routes"
 	"github.com/gorilla/mux"
-	_ "github.com/go-sql-driver/mysql"
+	_"github.com/go-sql-driver/mysql"
 )
 func main() {
 	r := mux.NewRouter()
