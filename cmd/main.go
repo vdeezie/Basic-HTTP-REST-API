@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"database/sql"
 
-	"BookServiceRESTAPI/pkg/routes"
+	"BookService/pkg/routes"
 	"github.com/gorilla/mux"
 	_"github.com/go-sql-driver/mysql"
 )
