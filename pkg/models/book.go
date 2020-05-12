@@ -1,7 +1,7 @@
 package models
 
 import (
-	"BookServiceRESTAPI/pkg/config"
+	"cmd/pkg/config"
 	"database/sql"
 )
 

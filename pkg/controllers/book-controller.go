@@ -3,11 +3,11 @@ package controllers
 import (
 	"encoding/json"
 	"fmt"
-	"BookServiceRESTAPI/pkg/routes/pkg/utils"
+	"cmd/pkg/routes/pkg/utils"
 	"github.com/gorilla/mux"
 	"net/http"
 	"strconv"
-	"BookServiceRESTAPI/pkg/models"
+	"cmd/pkg/models"
 )
 
 var NewBook models.Book

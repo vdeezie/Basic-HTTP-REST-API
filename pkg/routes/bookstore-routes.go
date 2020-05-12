@@ -1,7 +1,7 @@
 package routes
 
 import (
-	"BookServiceRESTAPI/pkg/controllers"
+	"cmd/pkg/controllers"
 	"github.com/gorilla/mux"
 )
 

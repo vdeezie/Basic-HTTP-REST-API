@@ -3,20 +3,23 @@ package config
 import (
 	"database/sql"
 	_"github.com/go-sql-driver/mysql"
+	"log"
 )
 
-var (
-	db * sql.DB
-)
+var connection *sql.DB
 
-func Connect() {
+func Connect() *sql.DB {
 	db, err := sql.Open("mysql", "root:595983Fc@tcp(127.0.0.1:3306)bookservicedb")
-	if err != nil{
-		panic(err)
-	}
-	db = d
-}
+	if err != nil {
+		log.Fatal(err)
+	} 
 
-func GetDB() *sql.DB {
+	err = db.Ping()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Println("Successfully Connected to MySQL database")
+	connection = db
 	return db
 }
