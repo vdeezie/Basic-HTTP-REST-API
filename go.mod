@@ -1,4 +1,4 @@
-module pkg
+module BookService
 
 go 1.14
 
