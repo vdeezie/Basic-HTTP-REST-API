@@ -7,7 +7,8 @@ import (
 
 var db *sql.DB
 
-type Book struct {
+//Book struct data
+type Book struct { 
 	sql.Model
 	//Id          string `json:"id"`
 	Name        string `sql:""json:"name"`
@@ -21,19 +22,21 @@ func init() {
 	db.AutoMigrate(&Book{})
 }
 
+//CreateBook method for database 
 func (b *Book) CreateBook() *Book {
 	db.NewRecord(b)
 	db.Create(&b)
 	return b
 }
 
+//GetAllBooks method for database 
 func  GetAllBooks() []Book {
 	var Books []Book
 	db.Find(&Books)
 	return Books
 }
 
-
+//DeleteBook method deletes books on the databse
 func DeleteBook(ID int64) Book {
 	var book Book
 	db.Where("ID = ?", ID).Delete(book)
