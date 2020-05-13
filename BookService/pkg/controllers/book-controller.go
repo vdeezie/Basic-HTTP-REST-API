@@ -7,7 +7,7 @@ import (
 	"github.com/gorilla/mux"
 	"net/http"
 	"strconv"
-	"cmd/pkg/models"
+	"BookService/pkg/models"
 )
 
 var NewBook models.Book
