@@ -1,15 +1,14 @@
 package models
 
 import (
-	"BookService/pkg/config"
+	"BookService/BookService/pkg/config"
 	"database/sql"
 )
 
 var db *sql.DB
-
+var err error
 //Book struct data
 type Book struct { 
-	sql.Model
 	//Id          string `json:"id"`
 	Name        string `sql:""json:"name"`
 	Author      string `json:"author"`

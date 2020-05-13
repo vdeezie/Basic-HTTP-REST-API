@@ -1,11 +1,11 @@
 package routes
 
 import (
-	"BookService/pkg/controllers"
+	"BookService/BookService/pkg/controllers"
 	"github.com/gorilla/mux"
-	_"gjshint"
+	
 )
-
+//RegisterBookStoreRoutes shows the specification for our API
 var RegisterBookStoreRoutes = func(router *mux.Router) {
 	router.HandleFunc("/book/", controllers.CreateBook).Methods("POST")
 	router.HandleFunc("/book/", controllers.GetBook).Methods("GET")

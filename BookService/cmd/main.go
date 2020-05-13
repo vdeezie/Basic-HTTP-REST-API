@@ -3,9 +3,8 @@ package main
 import (
 	"log"
 	"net/http"
-	"database/sql"
 
-	"BookService/pkg/routes"
+	"BookService/BookService/pkg/routes"
 	"github.com/gorilla/mux"
 	_"github.com/go-sql-driver/mysql"
 )

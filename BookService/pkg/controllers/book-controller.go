@@ -3,11 +3,11 @@ package controllers
 import (
 	"encoding/json"
 	"fmt"
-	"BookService/pkg/routes/pkg/utils"
+	"BookService/BookService/pkg/utils"
 	"github.com/gorilla/mux"
 	"net/http"
 	"strconv"
-	"BookService/pkg/models"
+	"BookService/BookService/pkg/models"
 )
 
 var NewBook models.Book
@@ -35,13 +35,9 @@ func UpdateBook(w http.ResponseWriter, r *http.Request) {
 	utils.ParseBody(r, updateBook)
 	vars := mux.Vars(r)
 	bookId := vars["bookId"]
-	ID, err:= strconv.ParseInt(bookId, 0, 0)
+	Id, err:= strconv.ParseInt(bookId, 0, 0)
 	if err != nil {
 		fmt.Println("Error while parsing")
-	}
-	bookDetails, db:= models.GetBookById(ID)
-	if updateBook.Name != "" {
-		bookDetails.Name = updateBook.Name
 	}
 	if updateBook.Author != "" {
 		bookDetails.Author = updateBook.Author
