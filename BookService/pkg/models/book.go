@@ -9,7 +9,7 @@ var db *sql.DB
 var err error
 //Book struct data
 type Book struct { 
-	//Id          string `json:"id"`
+	Id          string `json:"id"`
 	Name        string `sql:""json:"name"`
 	Author      string `json:"author"`
 	Publication string `json:"publication"`
